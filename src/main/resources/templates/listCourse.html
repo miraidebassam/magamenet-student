@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des cours</title>
+</head>
+<body>
+<h1>Liste des cours</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="course : ${courses}">
+        <td th:text="${course.id}"></td>
+        <td th:text="${course.name}"></td>
+        <td>
+            <a th:href="@{courses/{courseId}/getCourse(courseId=${course.id})}">Voir les détails</a>
+            <!-- ou bien, avec un bouton -->
+            <!-- <button type="button" th:onclick="'window.location.href=' + @{/students/{studentId}(studentId=${student.id})}'">Voir les détails</button> -->
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
